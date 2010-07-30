@@ -3,7 +3,11 @@
 module Face
   def Face.glitch(str)
     faces = data.split(/[\r\n]/)
-    faces[rand(faces.size)] + str
+    if rand > 0.5
+      return faces[rand(faces.size)] + ' ' + str
+    else
+      return str + ' ' + faces[rand(faces.size)]
+    end
   end
 
   def Face.data
