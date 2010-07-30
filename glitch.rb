@@ -57,6 +57,12 @@ class Glitch
     str.tr('あ-ん', 'ア-ン')
   end
 
+  def str_vertical_reverse(str)
+    require 'jcode' rescue return str
+    $KCODE = 'u'
+    str.downcase.tr('abcdefghijklmnopqrstuvwxyz', 'ɐqɔpǝɟbɥıظʞ1ɯuodbɹsʇnʌʍxʎz')
+  end
+
   def str_hiragana(str)
     require 'jcode' rescue return str
     $KCODE = 'u'
@@ -95,10 +101,6 @@ class Glitch
       end
     end
     strs.join('')
-  end
-
-  def str_shuffle_words(str)
-    
   end
 
   def str_line_prefix(str)
