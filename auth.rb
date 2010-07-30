@@ -25,5 +25,5 @@ oauth_verifier = gets.chomp.strip
 
 access_token = request_token.get_access_token(:oauth_verifier => oauth_verifier)
 
-puts 'access_token : ' + access_token.token
-puts 'access_secret : ' + access_token.secret
+puts 'access_token : ' + "'#{access_token.token}'"
+puts 'access_secret : ' + "'#{access_token.secret}'"
