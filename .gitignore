@@ -6,3 +6,4 @@ ttdb/*
 config.yaml
 .\#*
 *\#*
+.bundle
