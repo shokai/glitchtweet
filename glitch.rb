@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+require 'rubygems'
+
 class Glitch
   def str_methods
     methods.delete_if{|m| !(m=~/^str_.+/) or m == 'str_methods' }.map{|m|
@@ -65,6 +67,28 @@ class Glitch
     require 'jcode'
     $KCODE= 'u'
     str.tr('あ-んア-ン', 'ア-ンあ-ん')
+  end
+
+  def str_cmabridge(str)
+    require 'MeCab'
+    MeCab::Tagger.new.parse(str).map{|i|
+      i.split(/\t/).first
+    }.delete_if{|i|
+      i =~ /^EOS/
+    }.map{|i|
+      tmp = i.split(//u)
+      if tmp.size > 2
+        a = rand(tmp.size)
+        b = rand(tmp.size)
+        x = tmp[a]
+        tmp[a] = tmp[b]
+        tmp[b] = x
+        res = tmp.join('')
+      else
+        res = i
+      end
+      res
+    }
   end
 
   def str_line_prefix(str)
