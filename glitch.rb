@@ -14,7 +14,7 @@ class Glitch
       m = method("str_#{method_name}")
     end    
 
-    ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)/
+    ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
     str.split(ignore).map{|s|
       if s =~ ignore or s.size < 1
         result = " #{s} "
