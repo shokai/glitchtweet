@@ -5,13 +5,18 @@ require File.dirname(__FILE__)+'/glitch'
 g = Glitch.new
 p g.str_methods
 
-samples = ['@foo ああ眠い', 'プルアップ抵抗の選び方 http://example.com', '自分で整理しなくて良い', 'hello hello @bar has published 50+ papers in international journals, conferences and scientific workshops']
+samples = ['@foo ああ眠い', 'プルアップ抵抗の選び方 http://example.com', '自分で整理しなくて良い', 'hello hello @bar has published 50+ papers in international journals, conferences and scientific workshops', 'コンビニいこうぜ']
 
 
 samples.each{|str|
   puts '='*5 + str + '='*5
   for m in g.str_methods do
-    puts m.to_s + ' : ' + g.glitch(str, m)
+    if m.class == Array
+      print m.first
+    else
+      print m.to_s
+    end
+    puts ' : ' + g.glitch(str, m)
   end
 }
 

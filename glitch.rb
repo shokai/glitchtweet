@@ -7,9 +7,8 @@ class Glitch
       method(m)
     }
     Dir.glob(File.dirname(__FILE__)+'/plugins/*.rb').each{|lib|
-      require lib
       name = lib.split(/\//).last.split(/\./).first.capitalize
-      ms << eval("#{name}.method('glitch')")
+      ms << [lib, name]
     }
     ms
   end
@@ -18,8 +17,12 @@ class Glitch
     if method == nil
       ms = str_methods
       method = ms[rand(ms.size)]
-    end    
-
+    end
+    if method.class == Array
+      require method[0]
+      method = eval("#{method[1]}.method('glitch')")
+    end
+    
     ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
     str.split(ignore).map{|s|
       if s =~ ignore or s.size < 1
