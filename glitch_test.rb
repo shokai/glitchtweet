@@ -18,6 +18,6 @@ samples.each{|str|
 if ARGV.size > 0
   str = ARGV.join(' ')
   puts '='*5 + str + '='*5
-  puts random = g.glitch(:random, str)
-  puts g.glitch(:random, random)
+  puts random = g.glitch(str)
+  puts g.glitch(random)
 end
