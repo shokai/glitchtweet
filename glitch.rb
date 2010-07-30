@@ -52,25 +52,25 @@ class Glitch
   end
 
   def str_katakana(str)
-    require 'jcode'
+    require 'jcode' rescue return str
     $KCODE = 'u'
     str.tr('あ-ん', 'ア-ン')
   end
 
   def str_hiragana(str)
-    require 'jcode'
+    require 'jcode' rescue return str
     $KCODE = 'u'
     str.tr('ア-ン', 'あ-ん')
   end
-
+  
   def str_hirakata(str)
-    require 'jcode'
+    require 'jcode' rescue return str
     $KCODE= 'u'
-    str.tr('あ-んア-ン', 'ア-ンあ-ん')
+    return str.tr('あ-んア-ン', 'ア-ンあ-ん')
   end
 
   def str_cmabridge(str)
-    require 'MeCab'
+    require 'MeCab' rescue return str
     strs = MeCab::Tagger.new.parse(str).map{|i|
       i.split(/\t/).first
     }.delete_if{|i|
