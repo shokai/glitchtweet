@@ -40,7 +40,16 @@ class Glitch
   end
 
   def str_double(str)
-    str*2
+    str + ' ' + str
+  end
+
+  def str_fill_140(str)
+    len = str.split(//u).size
+    result = ''
+    (140/(len)).times do
+      result += str
+    end
+    result.chomp.strip
   end
 
   def str_ignore_search(str)
