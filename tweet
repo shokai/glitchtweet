@@ -28,7 +28,7 @@ begin
     message = g.glitch(message)
     break if rand > 0.2
   end
-  puts message = message.split(//u)[0...140].join('')
+  puts message = message.split(//u)[0...140].join('').toutf8
   tw.update(message)
 rescue => e
   STDERR.pust e
