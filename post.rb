@@ -4,6 +4,7 @@ require 'rubygems'
 require 'twitter'
 require 'kconv'
 require 'yaml'
+require File.dirname(__FILE__)+'/glitch'
 
 begin
   conf = YAML::load open(File.dirname(__FILE__) + '/config.yaml')
@@ -22,9 +23,14 @@ begin
   oauth = Twitter::OAuth.new(conf['consumer_key'], conf['consumer_secret'])
   oauth.authorize_from_access(conf['access_token'], conf['access_secret'])
   tw = Twitter::Base.new(oauth)
-  tw.update(message[0...140])
+  g = Glitch.new
+  loop do
+    message = g.glitch(:random, message)
+    break if rand > 0.2
+  end
+  puts message = message.split(//u)[0...140].join('')
+  tw.update(message)
 rescue => e
   STDERR.pust e
 end
   
-
