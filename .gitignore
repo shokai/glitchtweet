@@ -1,0 +1,8 @@
+DS_Store
+*~
+pkg/*
+ttdb/*
+.fuse*
+config.yaml
+.\#*
+*\#*
