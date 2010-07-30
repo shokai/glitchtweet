@@ -87,5 +87,17 @@ class Glitch
   def str_line_prefix(str)
     '─'*3 + '─'*rand(6)+str
   end
+
+  def str_double_char(str)
+    result = ''
+    str.split(//u).each{|c|
+      if c =~ /\s/
+        result += c
+      else
+        result += c*2
+      end
+    }
+    result
+  end
   
 end
