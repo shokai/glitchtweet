@@ -61,6 +61,12 @@ class Glitch
     str.tr('ア-ン', 'あ-ん')
   end
 
+  def str_hirakata(str)
+    require 'jcode'
+    $KCODE= 'u'
+    str.tr('あ-んア-ン', 'ア-ンあ-ん')
+  end
+
   def str_line_prefix(str)
     '─'*rand(6)+str
   end
