@@ -113,7 +113,7 @@ class Glitch
   end
 
   def str_line_prefix(str)
-    '─'*rand(6)+str
+    '─'*3 + '─'*rand(6)+str
   end
   
   def str_kirakira(str)
