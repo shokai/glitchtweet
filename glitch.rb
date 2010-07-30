@@ -3,17 +3,21 @@ require 'rubygems'
 
 class Glitch
   def str_methods
-    methods.delete_if{|m| !(m=~/^str_.+/) or m == 'str_methods' }.map{|m|
-      m.scan(/^str_(.+)/).first.first
+    ms = methods.delete_if{|m| !(m=~/^str_.+/) or m == 'str_methods' }.map{|m|
+      method(m)
     }
+    Dir.glob(File.dirname(__FILE__)+'/plugins/*.rb').each{|lib|
+      require lib
+      name = lib.split(/\//).last.split(/\./).first.capitalize
+      ms << eval("#{name}.method('glitch')")
+    }
+    ms
   end
 
-  def glitch(method_name, str)
-    if method_name.to_s == 'random'
+  def glitch(str, method=nil)
+    if method == nil
       ms = str_methods
-      m = method("str_#{ms[rand(ms.size)]}")
-    else
-      m = method("str_#{method_name}")
+      method = ms[rand(ms.size)]
     end    
 
     ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
@@ -21,14 +25,10 @@ class Glitch
       if s =~ ignore or s.size < 1
         result = " #{s} "
       else
-        result = m.call(s)
+        result = method.call(s)
       end
       result
     }.join('').chomp.strip
-  end
-
-  def str_plain(str)
-    str
   end
 
   def str_reverse(str)

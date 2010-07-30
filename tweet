@@ -25,7 +25,7 @@ begin
   tw = Twitter::Base.new(oauth)
   g = Glitch.new
   loop do
-    message = g.glitch(:random, message)
+    message = g.glitch(message)
     break if rand > 0.2
   end
   puts message = message.split(//u)[0...140].join('')

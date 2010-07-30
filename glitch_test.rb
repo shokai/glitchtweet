@@ -11,7 +11,7 @@ samples = ['@foo ああ眠い', 'プルアップ抵抗の選び方 http://exampl
 samples.each{|str|
   puts '='*5 + str + '='*5
   for m in g.str_methods do
-    puts m + ' : ' + g.glitch(m, str)
+    puts m.to_s + ' : ' + g.glitch(str, m)
   end
 }
 
