@@ -25,9 +25,10 @@ begin
   tw = Twitter::Base.new(oauth)
   g = Glitch.new
   res = nil
+  first = message
   loop do
     puts res = g.glitch(message)
-    break if res != message and rand > 0.2
+    break if res != message and first != message and rand > 0.2
     message = res
   end
   message = res
