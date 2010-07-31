@@ -22,7 +22,7 @@ class Glitch
       require method[0]
       method = eval("#{method[1]}.method('glitch')")
     end
-    
+    puts method.to_s
     ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
     str.split(ignore).map{|s|
       if s =~ ignore or s.size < 1

@@ -14,7 +14,7 @@ rescue
   exit 1
 end
 
-puts message = ARGV.join(' ')
+puts message = ARGV.join(' ').toutf8
 if message.size < 1
   STDERR.puts 'message if empty'
   exit 1
