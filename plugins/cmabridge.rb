@@ -8,7 +8,7 @@ module Cmabridge
       i =~ /^EOS/
     }.map{|i|
       tmp = i.split(//u)
-      if tmp.size > 2
+      if tmp.size > 1
         a = rand(tmp.size-1)
         b = a+1
         x = tmp[a]
