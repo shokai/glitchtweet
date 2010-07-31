@@ -31,6 +31,6 @@ begin
   puts message = message.split(//u)[0...140].join('').toutf8
   tw.update(message)
 rescue => e
-  STDERR.pust e
+  STDERR.puts e
 end
   
