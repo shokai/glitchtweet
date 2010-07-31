@@ -94,7 +94,7 @@ class Glitch
   def str_double_char(str)
     result = ''
     str.split(//u).each{|c|
-      if c =~ /\s/
+      if c =~ /[ 　\t]/
         result += c
       else
         result += c*2
