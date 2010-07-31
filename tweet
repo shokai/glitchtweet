@@ -5,6 +5,7 @@ require 'twitter'
 require 'kconv'
 require 'yaml'
 require File.dirname(__FILE__)+'/glitch'
+$KCODE = 'u'
 
 begin
   conf = YAML::load open(File.dirname(__FILE__) + '/config.yaml')
