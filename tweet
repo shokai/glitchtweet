@@ -13,7 +13,7 @@ rescue
   exit 1
 end
 
-message = ARGV.join(' ')
+puts message = ARGV.join(' ')
 if message.size < 1
   STDERR.puts 'message if empty'
   exit 1
@@ -31,7 +31,7 @@ begin
     message = res
   end
   message = res
-  puts message = message.split(//u)[0...140].join('').toutf8
+  puts 'tweet : ' + message = message.split(//u)[0...140].join('').toutf8
   tw.update(message)
 rescue => e
   STDERR.puts e
