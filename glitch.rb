@@ -71,9 +71,14 @@ class Glitch
   end
 
   def str_vertical_reverse(str)
-    require 'jcode' rescue return str
-    $KCODE = 'u'
-    str.downcase.tr('abcdefghijklmnopqrstuvwxyz', 'ɐqɔpǝɟbɥıظʞ1ɯuodbɹsʇnʌʍxʎz')
+    a = 'abcdefghijklmnopqrstuvwxyz'.split(//u)
+    b = 'ɐqɔpǝɟbɥıظʞ1ɯuodbɹsʇnʌʍxʎz'.split(//u)
+    str.split(//u).map{|i|
+      if a.include?(i)
+        i = b[a.index(i)]
+      end
+      i
+    }.join('')
   end
 
   def str_hiragana(str)
