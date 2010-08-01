@@ -5,7 +5,12 @@ require File.dirname(__FILE__)+'/glitch'
 g = Glitch.new
 p g.str_methods
 
-samples = ['@foo ああ眠い', 'プルアップ抵抗の選び方 http://example.com', '自分で整理しなくて良い', 'hello hello @bar has published 50+ papers in international journals, conferences and scientific workshops', 'コンビニいこうぜ', 'http://kaomojiya.com/ の顔文字全部取り込んだ']
+samples = ['@foo ああ眠い',
+           'プルアップ抵抗の選び方 http://example.com',
+           '自分で整理しなくて良い',
+           'hello hello @bar has published 50+ papers in international journals, conferences and scientific workshops',
+           'コンビニいこうぜ',
+           'http://kaomojiya.com/ の顔文字全部取り込んだ']
 samples << ARGV.join(' ') if ARGV.size > 0
 
 
