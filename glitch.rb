@@ -24,7 +24,7 @@ class Glitch
       method = eval("#{method[1]}.method('glitch')")
     end
     ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
-    str.toutf8.split(ignore).map{|s|
+    result = str.toutf8.split(ignore).map{|s|
       if s =~ ignore or s.size < 1
         result = " #{s} "
       else
@@ -32,6 +32,7 @@ class Glitch
       end
       result
     }.join('').chomp.strip.toutf8
+    return result, method
   end
 
   def str_reverse(str)

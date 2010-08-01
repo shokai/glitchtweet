@@ -25,14 +25,12 @@ begin
   oauth.authorize_from_access(conf['access_token'], conf['access_secret'])
   tw = Twitter::Base.new(oauth)
   g = Glitch.new
-  res = nil
   first = message
   loop do
-    puts res = g.glitch(message)
-    break if res != message and first != message and rand > 0.2
-    message = res
+    message, method = g.glitch(message)
+    puts "#{method.to_s} : #{message}"
+    break if first != message and rand > 0.2
   end
-  message = res
   puts 'tweet : ' + message = message.split(//u)[0...140].join('').toutf8
   tw.update(message)
 rescue => e
