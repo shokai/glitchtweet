@@ -2,9 +2,14 @@
 module Dullness
   def Dullness.glitch(str)
     $KCODE = 'u'
-    arr = str.tr('かきくけこさしすせそたちつてと','がぎぐげござじずぜぞだぢづでど').
+    str = str.tr('かきくけこさしすせそたちつてと','がぎぐげござじずぜぞだぢづでど').
       tr('はひふへほ','ばびぶべぼ').
       tr('カキクケコサシスセソタチツテト','ガギグゲゴザジズゼゾダヂヅデド').
       tr('ハヒフヘホ','バビブベボ')
+    'あいうえおなにぬねのまみむめもやゆよわをん'.split(//u).each{|i|
+      str.gsub!(/#{i}"/, i)
+      str.gsub!(/#{i}/, "#{i}\"")
+    }
+    return str
   end
 end
