@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
+require 'kconv'
 
 class Glitch
   def str_methods
@@ -22,16 +23,15 @@ class Glitch
       require method[0]
       method = eval("#{method[1]}.method('glitch')")
     end
-    puts method.to_s
     ignore = /(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)|(@[a-zA-Z0-9_]+)|(#[a-zA-Z0-9_\-]+)/
-    str.split(ignore).map{|s|
+    str.toutf8.split(ignore).map{|s|
       if s =~ ignore or s.size < 1
         result = " #{s} "
       else
         result = method.call(s)
       end
       result
-    }.join('').chomp.strip
+    }.join('').chomp.strip.toutf8
   end
 
   def str_reverse(str)
