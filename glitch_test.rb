@@ -12,12 +12,7 @@ samples << ARGV.join(' ') if ARGV.size > 0
 samples.each{|str|
   puts '='*5 + str + '='*5
   for m in g.str_methods do
-    if m.class == Array
-      print m.first
-    else
-      print m.to_s
-    end
-    puts ' : ' + g.glitch(str, m)
+    puts m.to_s + ' : ' + g.glitch(str, m)
   end
 }
 
