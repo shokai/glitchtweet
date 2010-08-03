@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -Ku
 # -*- coding: utf-8 -*-
 require 'rubygems'
 require 'twitter'
@@ -26,7 +26,7 @@ begin
   tw = Twitter::Base.new(oauth)
   g = Glitch.new
   first = message
-  loop do
+  5.times do
     message, method = g.glitch(message)
     puts "#{method.to_s} : #{message}"
     break if first != message and rand > 0.2
