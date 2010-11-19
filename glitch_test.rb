@@ -23,9 +23,9 @@ samples.each{|str|
 }
 
 if ARGV.size > 0
-  str = ARGV.join(' ')
+  str = ARGV.join(' ').to_s
   puts '='*5 + str + '='*5
   puts random = g.glitch(str)
-  puts random = g.glitch(random)
-  puts random = g.glitch(random)
+  puts random = g.glitch(random.first)
+  puts random = g.glitch(random.first)
 end

@@ -5,7 +5,7 @@ module Cmabridge
     strs = MeCab::Tagger.new.parse(str).map{|i|
       i.split(/\t/).first
     }.delete_if{|i|
-      i =~ /^EOS/
+      i =~ /^EOS$/
     }.map{|i|
       tmp = i.split(//u)
       if tmp.size > 1
