@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby -Ku
 # -*- coding: utf-8 -*-
 require 'rubygems'
+require 'bundler'
+gem 'twitter','0.9.12'
 require 'twitter'
 require 'kconv'
 require 'yaml'
